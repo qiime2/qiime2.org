@@ -1,0 +1,29 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 8652b74f-7e9e-438a-955f-edceb85c9ebb
+  # title:
+  # description:
+  keywords: []
+  authors: []
+  # github:
+  # bibliography: []
+  plugins:
+    - hero.mjs
+    - footer.mjs
+    - lorem.mjs
+site:
+  template: landing-theme
+  # title:
+  options:
+    logo: logo.webp
+    logo_text: My Landing Page
+    other: 1
+    topbar_height: 80
+    topbar_floating: false
+    topbar_fixed: false
+  nav: []
+  actions:
+    - title: Learn More
+      url: https://mystmd.org/guide
+  domains: []
