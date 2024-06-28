@@ -11,13 +11,19 @@ const heroDirective = {
     description: { type: String, doc: 'A longer description to display under the tagline' },
     'background-image': { type: String, doc: 'URL of the background image' },
     'background-color': { type: String, doc: 'Background color of the hero unit' },
+    'text-color': { type: String, doc: 'Text color within the hero unit' },
+    layout: {
+      type: String,
+      doc: 'Layout of the hero unit (default: `center`), (values:`left`, `center`, `right`)',
+      values: ['center', 'left', 'right'],
+    },
     padding: {
       type: String,
       doc: 'Padding around the hero unit using a css padding string like `1rem` or `1rem 2rem`',
     },
-    'cta-text': { type: String, doc: 'Text for the call to action button' },
+    'cta-title': { type: String, doc: 'Text for the call to action button' },
     'cta-url': { type: String, doc: 'URL for the call to action button' },
-    'cta-text-2': { type: String, doc: 'Text for the call to action button' },
+    'cta-title-2': { type: String, doc: 'Text for the call to action button' },
     'cta-url-2': { type: String, doc: 'URL for the call to action button' },
   },
   validate(data, vfile) {
@@ -32,6 +38,7 @@ const heroDirective = {
 
     const json = {
       backgroundColor: data.options['background-color'],
+      textColor: data.options['text-color'],
       padding: data.options.padding,
     };
 
@@ -40,8 +47,8 @@ const heroDirective = {
       title: identifier,
       tagline: data.options.tagline ? createId() : undefined,
       description: data.options.description ? createId() : undefined,
-      cta: data.options['cta-text'] ? createId() : undefined,
-      cta2: data.options['cta-text-2'] ? createId() : undefined,
+      cta: data.options['cta-title'] ? createId() : undefined,
+      cta2: data.options['cta-title-2'] ? createId() : undefined,
       backgroundImage: data.options['background-image'] ? createId() : undefined,
     };
 
@@ -49,8 +56,8 @@ const heroDirective = {
       title: parseInlineMyst(data.arg),
       tagline: parseInlineMyst(data.options.tagline),
       description: parseInlineMyst(data.options.description),
-      ctaText: parseInlineMyst(data.options['cta-text']),
-      ctaText2: parseInlineMyst(data.options['cta-text-2']),
+      ctaTitle: parseInlineMyst(data.options['cta-title']),
+      ctaTitle2: parseInlineMyst(data.options['cta-title-2']),
     };
 
     const contents = [];
@@ -85,18 +92,18 @@ const heroDirective = {
     if (id.cta || id.cta2) {
       const ctas = [];
 
-      if (parsed.ctaText && data.options['cta-url']) {
+      if (parsed.ctaTitle && data.options['cta-url']) {
         ctas.push(
           u('listItem', [
-            u('link', { identifier: id.cta, url: data.options['cta-url'] }, parsed.ctaText),
+            u('link', { identifier: id.cta, url: data.options['cta-url'] }, parsed.ctaTitle),
           ])
         );
       }
 
-      if (parsed.ctaText2 && data.options['cta-url-2']) {
+      if (parsed.ctaTitle2 && data.options['cta-url-2']) {
         ctas.push(
           u('listItem', [
-            u('link', { identifier: id.cta2, url: data.options['cta-url-2'] }, parsed.ctaText2),
+            u('link', { identifier: id.cta2, url: data.options['cta-url-2'] }, parsed.ctaTitle2),
           ])
         );
       }

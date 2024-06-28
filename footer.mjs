@@ -8,21 +8,23 @@ const footerDirective = {
   options: {
     logo: { type: String, doc: 'URL of the logo' },
     'logo-dark': { type: String, doc: 'URL of the logo' },
+    'logo-title': { type: String, doc: 'Title of the logo, used as alt text' },
+    'logo-url': { type: String, doc: 'URL to navigate to when the logo is clicked' },
     tagline: { type: String, doc: 'A tagline to display under the logo' },
-    website: { type: String, doc: 'URL of the website' },
     padding: {
       type: String,
       doc: 'Padding around the hero unit using a css padding string like `1rem` or `1rem 2rem`',
     },
-    'background-color': { type: String, doc: 'Background color of the hero unit' },
+    'background-color': { type: String, doc: 'Background color of the footer' },
+    'text-color': { type: String, doc: 'Text color of the footer' },
+    copyright: {
+      type: String,
+      doc: 'Text to display at the very bottom of the footer, typically a copyright statement',
+    },
   },
   body: {
     type: String,
-    doc: 'The body of the footer should contain links in the form of a list with up to 2 nested lists',
-  },
-  validate(data, vfile) {
-    // return { ...data, options: {} };
-    return data;
+    doc: 'The body of the footer should contain links in the form of a list with up to 2 nested lists. Links with `scienceicon` roles as their titles will be picked up as social icons.',
   },
   run(data, vfile, ctx) {
     function parseInlineMyst(myst) {
@@ -32,43 +34,76 @@ const footerDirective = {
 
     const json = {
       backgroundColor: data.options['background-color'],
+      textColor: data.options['text-color'],
       padding: data.options.padding,
+      logoTitle: data.options['logo-title'],
+      logoUrl: data.options['logo-url'],
     };
 
-    const id = {
+    const ids = {
       footer: createId(),
       logo: data.options.logo ? createId() : undefined,
       logoDark: data.options['logo-dark'] ? createId() : undefined,
       tagline: data.options.tagline ? createId() : undefined,
-      website: data.options.website ? createId() : undefined,
       linkList1: createId(),
       linkList2: createId(),
+      copyright: data.options.copyright ? createId() : undefined,
+      social: createId(),
     };
 
     const parsed = {
       tagline: parseInlineMyst(data.options.tagline),
       body: ctx.parseMyst(data.body),
+      copyright: data.options.copyright ? parseInlineMyst(data.options.copyright) : undefined,
     };
 
     const lhs = [];
 
     if (data.options.logo)
-      lhs.push(u('image', { align: 'left', url: data.options.logo, identifier: id.logo }));
+      lhs.push(
+        u('link', { url: data.options['logo-url'] }, [
+          u('image', {
+            align: 'left',
+            url: data.options.logo,
+            identifier: ids.logo,
+            alt: data.options['logo-title'],
+          }),
+        ])
+      );
     if (data.options['logo-dark'])
       lhs.push(
-        u('image', { align: 'left', url: data.options['logo-dark'], identifier: id.logoDark })
+        u('link', { url: data.options['logo-url'] }, [
+          u('image', {
+            align: 'left',
+            url: data.options['logo-dark'],
+            identifier: ids.logoDark,
+            alt: data.options.logoTitle,
+          }),
+        ])
       );
-    if (data.options.tagline) lhs.push(u('paragraph', { identifier: id.tagline }, parsed.tagline));
+    if (data.options.tagline) lhs.push(u('paragraph', { identifier: ids.tagline }, parsed.tagline));
+    if (data.options.website)
+      lhs.push(
+        u('link', { url: data.options.website, identifier: ids.website }, [
+          u('text', data.options.website),
+        ])
+      );
+
+    const social = selectAll('link:has(scienceicon)', parsed.body);
+    if (social && social.length > 0) {
+      lhs.push(u('hr'));
+      lhs.push(u('div', { identifier: ids.social }, social));
+    }
 
     const lists = selectAll('list list', parsed.body);
     const rhs = [];
 
-    if (lists[0]?.children) rhs.push(u('list', { identifier: id.linkList1 }, lists[0].children));
-    if (lists[1]?.children) rhs.push(u('list', { identifier: id.linkList2 }, lists[1].children));
+    if (lists[0]?.children) rhs.push(u('list', { identifier: ids.linkList1 }, lists[0].children));
+    if (lists[1]?.children) rhs.push(u('list', { identifier: ids.linkList2 }, lists[1].children));
 
     const block = u(
       'block',
-      { kind: 'footer', data: { ...data.node.data, ...json, identifiers: id } },
+      { kind: 'footer', data: { ...data.node.data, ...json, identifiers: ids } },
       [
         u('div', { class: 'flex justify-between py-2 items-center' }, [
           u('div', { class: 'space-y-1 flex-grow flex flex-col items-start footer__lhs' }, lhs),
@@ -80,6 +115,11 @@ const footerDirective = {
         ]),
       ]
     );
+
+    if (parsed.copyright) {
+      block.children.push(u('hr'));
+      block.children.push(u('div', { identifier: ids.copyright }, parsed.copyright));
+    }
 
     return [block];
   },

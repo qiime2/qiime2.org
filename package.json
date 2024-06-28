@@ -1,19 +1,17 @@
 {
-  "name": "my-landing",
+  "name": "qiime2-landing",
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
   "license": "MIT",
   "description": "",
-  "devDependencies": {
-    "lorem-ipsum": "^2.0.8",
-    "myst-common": "^1.4.7"
-  },
   "dependencies": {
+    "@scienceicons/react": "0.0.11",
+    "lorem-ipsum": "^2.0.8",
+    "myst-common": "^1.4.7",
     "unist-builder": "^4.0.0",
     "unist-util-select": "^5.1.0"
   }

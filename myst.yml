@@ -1,29 +1,26 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 project:
-  id: 8652b74f-7e9e-438a-955f-edceb85c9ebb
+  id: qiime2-landing-page
   # title:
   # description:
   keywords: []
   authors: []
-  # github:
+  github: https://github.com/qiime2
   # bibliography: []
   plugins:
     - hero.mjs
     - footer.mjs
     - lorem.mjs
+    - scienceicons.mjs
+    - discourse.mjs
 site:
-  template: landing-theme
-  # title:
+  template: ../../dev-journals/landing-theme
   options:
-    logo: logo.webp
-    logo_text: My Landing Page
-    other: 1
+    logo: qiime2.svg
+    favicon: images/qiime2-favicon-256.png
     topbar_height: 80
     topbar_floating: false
     topbar_fixed: false
   nav: []
-  actions:
-    - title: Learn More
-      url: https://mystmd.org/guide
   domains: []
