@@ -41,9 +41,83 @@ Find [announcements](https://forum.qiime2.org/c/announcements/8) of releases and
 
 ## 🧐 Learn to use QIIME 2
 
-:link: https://docs.qiime2.org
-The QIIME 2 user documentation is where you can find tutorials and reference content.
+The [QIIME 2 user documentation](https://docs.qiime2.org) is where you can find tutorials and reference content.
 There is a lot of excellent content here, and it will soon be refactored in [JupyterBook](https://jupyterbook.org/en/stable/intro.html) and with [Diátaxis](https://diataxis.fr/) to improve the organization and update the content to highlight the newest functionality.
+
+## 🎛️ Use QIIME 2 via multiple interfaces
+
+QIIME 2 can be used programmatically (Python, R), via the command line and via Galaxy.
+
+:::::{hint} Example from from [Filtering Feature Tables](https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/030-tutorial-downstream/010-filtering.html)
+
+We’ll next obtain a much larger feature table representing all of the samples included in the ([LTC+21]) dataset. These would take too much time to denoise in this course, so we’ll start with the feature table, sequences, and metadata provided by the authors and filter to samples that we’ll use for our analyses. If you’d like to perform other experiments with this feature table, you can do that using the full feature table or a subset that you define by filtering.
+
+::::{tab-set}
+:::{tab-item} Galaxy (q2galaxy)
+
+### Access the data
+
+First, download the full feature table.
+
+**Using the Upload Data tool:**
+
+1. On the first tab (Regular), press the Paste/Fetch data button at the bottom.
+
+   1. Set “Name” (first text-field) to: feature-table.qza
+
+   1. In the larger text-area, copy-and-paste: https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/data/030-tutorial-downstream/010-filtering/feature-table.qza
+
+   1. (“Type”, “Genome”, and “Settings” can be ignored)
+
+1. Press the Start button at the bottom.
+
+:::
+
+:::{tab-item} Command Line (q2cli)
+
+### Access the data
+
+First, download the full feature table.
+
+```sh
+wget \
+  -O 'feature-table.qza' \
+  'https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/data/030-tutorial-downstream/010-filtering/feature-table.qza'
+```
+
+:::
+
+:::{tab-item} Python 3 API (qiime2)
+
+### Access the data
+
+First, download the full feature table.
+
+```python
+url = 'https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/data/030-tutorial-downstream/010-filtering/feature-table.qza'
+fn = 'feature-table.qza'
+request.urlretrieve(url, fn)
+feature_table = Artifact.load(fn)
+```
+
+:::
+
+:::{tab-item} R API (qiime2)
+
+### Access the data
+
+First, download the full feature table.
+
+```r
+url <- 'https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/data/030-tutorial-downstream/010-filtering/feature-table.qza'
+fn <- 'feature-table.qza'
+request$urlretrieve(url, fn)
+feature_table <- Artifact$load(fn)
+```
+
+:::
+::::
+:::::
 
 ## 📈 Interact with QIIME 2 results and view their data provenance
 
