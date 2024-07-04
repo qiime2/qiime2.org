@@ -13,8 +13,8 @@ const discourseDirective = {
     category: { type: String, doc: 'Name of the category to list topics from', required: true },
     mode: {
       type: String,
-      doc: 'The type of widget to display (`widget`, `feed`)',
-      default: 'feed',
+      doc: 'The type of widget to display (default: `server`), (values: `widget`, `server`, `client`)',
+      default: 'server',
     },
     logo: { type: String, doc: 'The forum logo' },
     'logo-dark': { type: String, doc: 'Dark mode version of the forum logo' },
@@ -29,9 +29,11 @@ const discourseDirective = {
   run(data, vfile, ctx) {
     const url = data.arg;
 
+    const modes = ['widget', 'server', 'client'];
+
     const json = {
       category: noBooleans(data.options.category),
-      mode: data.options.mode === 'widget' ? 'widget' : 'feed',
+      mode: modes.includes(data.options.mode) ? data.options.mode : 'server',
       limit: noBooleans(data.options.limit),
       pinned: data.options.pinned === 'true',
       logoTitle: noBooleans(data.options['logo-title']),

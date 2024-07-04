@@ -22,5 +22,7 @@ site:
     topbar_height: 80
     topbar_floating: false
     topbar_fixed: false
+    show_footnotes: false
+    show_bibliography: false
   nav: []
   domains: []

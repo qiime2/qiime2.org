@@ -1,6 +1,10 @@
 import { u } from 'unist-builder';
 import { createId, normalizeLabel, fileError } from 'myst-common';
 
+function noBooleans(value) {
+  return value === 'true' ? undefined : value;
+}
+
 const heroDirective = {
   name: 'hero',
   doc: 'An hero unit with a an optional background image. This will render as a block in any myst theme but can be upgraded to richer hero unit in themes that have specialized renderers for blocks with `kind: hero`.',
@@ -25,10 +29,10 @@ const heroDirective = {
     'cta-url': { type: String, doc: 'URL for the call to action button' },
     'cta-title-2': { type: String, doc: 'Text for the call to action button' },
     'cta-url-2': { type: String, doc: 'URL for the call to action button' },
-  },
-  validate(data, vfile) {
-    // return { ...data, options: {} };
-    return data;
+    'cta-style': {
+      type: String,
+      doc: 'Style of the call to action button (default: `light`), (values: `light`, `dark`)',
+    },
   },
   run(data, vfile, ctx) {
     function parseInlineMyst(myst) {
@@ -37,9 +41,12 @@ const heroDirective = {
     }
 
     const json = {
-      backgroundColor: data.options['background-color'],
-      textColor: data.options['text-color'],
-      padding: data.options.padding,
+      backgroundColor: noBooleans(data.options['background-color']),
+      textColor: noBooleans(data.options['text-color']),
+      padding: noBooleans(data.options.padding),
+      ctaStyle: ['light', 'dark'].includes(data.options['cta-style'])
+        ? noBooleans(data.options['cta-style'])
+        : undefined,
     };
 
     const { identifier, label, html_id } = normalizeLabel(data.arg) || {};
