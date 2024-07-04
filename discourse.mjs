@@ -31,11 +31,13 @@ const discourseDirective = {
 
     const modes = ['widget', 'server', 'client'];
 
+    console.log('data', data.options);
+
     const json = {
       category: noBooleans(data.options.category),
       mode: modes.includes(data.options.mode) ? data.options.mode : 'server',
       limit: noBooleans(data.options.limit),
-      pinned: data.options.pinned === 'true',
+      pinned: data.options.pinned === true,
       logoTitle: noBooleans(data.options['logo-title']),
     };
 

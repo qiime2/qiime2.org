@@ -22,9 +22,9 @@ Find [announcements](https://forum.qiime2.org/c/announcements/8) of releases and
 
 :::{discourse} https://forum.qiime2.org
 :category: announcements
-:mode: client
+:mode: server
 :limit: 8
-:pinned: true
+:pinned: false
 :logo: https://cdck-file-uploads-global.s3.dualstack.us-west-2.amazonaws.com/flex002/uploads/qiime21/original/2X/3/32cfb71cfbcecd0d160df5fe08f51014402e7caf.png
 :logo-dark: https://cdck-file-uploads-global.s3.dualstack.us-west-2.amazonaws.com/flex002/uploads/qiime21/original/2X/3/32cfb71cfbcecd0d160df5fe08f51014402e7caf.png
 :logo-title: qiime logo
