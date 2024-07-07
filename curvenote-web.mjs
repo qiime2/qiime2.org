@@ -667,9 +667,80 @@ var require_lib = __commonJS({
   }
 });
 
-// src/footer.ts
-import { u } from "unist-builder";
-import { createId } from "myst-common";
+// node_modules/unist-builder/lib/index.js
+function u(type, props, value) {
+  const node = { type: String(type) };
+  if ((value === void 0 || value === null) && (typeof props === "string" || Array.isArray(props))) {
+    value = props;
+  } else {
+    Object.assign(node, props);
+  }
+  if (Array.isArray(value)) {
+    node.children = value;
+  } else if (value !== void 0 && value !== null) {
+    node.value = String(value);
+  }
+  return node;
+}
+
+// node_modules/nanoid/index.js
+import { randomFillSync } from "crypto";
+var POOL_SIZE_MULTIPLIER = 128;
+var pool;
+var poolOffset;
+var fillPool = (bytes) => {
+  if (!pool || pool.length < bytes) {
+    pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER);
+    randomFillSync(pool);
+    poolOffset = 0;
+  } else if (poolOffset + bytes > pool.length) {
+    randomFillSync(pool);
+    poolOffset = 0;
+  }
+  poolOffset += bytes;
+};
+var random = (bytes) => {
+  fillPool(bytes -= 0);
+  return pool.subarray(poolOffset - bytes, poolOffset);
+};
+var customRandom = (alphabet, defaultSize, getRandom) => {
+  let mask = (2 << 31 - Math.clz32(alphabet.length - 1 | 1)) - 1;
+  let step = Math.ceil(1.6 * mask * defaultSize / alphabet.length);
+  return (size = defaultSize) => {
+    let id = "";
+    while (true) {
+      let bytes = getRandom(step);
+      let i = step;
+      while (i--) {
+        id += alphabet[bytes[i] & mask] || "";
+        if (id.length === size) return id;
+      }
+    }
+  };
+};
+var customAlphabet = (alphabet, size = 21) => customRandom(alphabet, size, random);
+
+// node_modules/myst-common/dist/utils.js
+var az = "abcdefghijklmnopqrstuvwxyz";
+var alpha = az + az.toUpperCase();
+var numbers = "0123456789";
+var nanoidAZ = customAlphabet(alpha, 1);
+var nanoidAZ9 = customAlphabet(alpha + numbers, 9);
+function createId() {
+  return nanoidAZ() + nanoidAZ9();
+}
+function normalizeLabel(label) {
+  if (!label)
+    return void 0;
+  const identifier = label.replace(/[\t\n\r ]+/g, " ").replace(/['‘’"“”]+/g, "").trim().toLowerCase();
+  const html_id = createHtmlId(identifier);
+  return { identifier, label, html_id };
+}
+function createHtmlId(identifier) {
+  if (!identifier)
+    return void 0;
+  return identifier.toLowerCase().replace(/[^a-z0-9-]/g, "-").replace(/^([0-9-])/, "id-$1").replace(/-[-]+/g, "-").replace(/(?:^[-]+)|(?:[-]+$)/g, "");
+}
 
 // node_modules/zwitch/index.js
 var own = {}.hasOwnProperty;
@@ -1268,10 +1339,6 @@ var footerDirective = {
   }
 };
 
-// src/hero.ts
-import { u as u2 } from "unist-builder";
-import { createId as createId2, normalizeLabel as normalizeLabel2 } from "myst-common";
-
 // src/utils.ts
 function noBooleans(value) {
   return value === "true" ? void 0 : value;
@@ -1317,14 +1384,14 @@ var heroDirective = {
       padding: noBooleans(data.options.padding),
       ctaStyle: ["light", "dark"].includes(data.options["cta-style"]) ? noBooleans(data.options["cta-style"]) : void 0
     };
-    const { identifier, label, html_id } = normalizeLabel2(data.arg) || {};
+    const { identifier, label, html_id } = normalizeLabel(data.arg) || {};
     const id = {
       title: identifier,
-      tagline: data.options.tagline ? createId2() : void 0,
-      description: data.options.description ? createId2() : void 0,
-      cta: data.options["cta-title"] ? createId2() : void 0,
-      cta2: data.options["cta-title-2"] ? createId2() : void 0,
-      backgroundImage: data.options["background-image"] ? createId2() : void 0
+      tagline: data.options.tagline ? createId() : void 0,
+      description: data.options.description ? createId() : void 0,
+      cta: data.options["cta-title"] ? createId() : void 0,
+      cta2: data.options["cta-title-2"] ? createId() : void 0,
+      backgroundImage: data.options["background-image"] ? createId() : void 0
     };
     const parsed = {
       title: parseInlineMyst(data.arg),
@@ -1336,14 +1403,14 @@ var heroDirective = {
     const contents = [];
     if (data.options["background-image"])
       contents.push(
-        u2("image", {
+        u("image", {
           align: "center",
           url: data.options["background-image"],
           identifier: id.backgroundImage
         })
       );
     contents.push(
-      u2(
+      u(
         "heading",
         {
           depth: 1,
@@ -1355,29 +1422,29 @@ var heroDirective = {
         parsed.title
       )
     );
-    if (id.tagline) contents.push(u2("blockquote", { identifier: id.tagline }, parsed.tagline));
+    if (id.tagline) contents.push(u("blockquote", { identifier: id.tagline }, parsed.tagline));
     if (id.description)
-      contents.push(u2("paragraph", { identifier: id.description }, parsed.description));
+      contents.push(u("paragraph", { identifier: id.description }, parsed.description));
     if (id.cta || id.cta2) {
       const ctas = [];
       if (parsed.ctaTitle && data.options["cta-url"]) {
         ctas.push(
-          u2("listItem", [
-            u2("link", { identifier: id.cta, url: data.options["cta-url"] }, parsed.ctaTitle)
+          u("listItem", [
+            u("link", { identifier: id.cta, url: data.options["cta-url"] }, parsed.ctaTitle)
           ])
         );
       }
       if (parsed.ctaTitle2 && data.options["cta-url-2"]) {
         ctas.push(
-          u2("listItem", [
-            u2("link", { identifier: id.cta2, url: data.options["cta-url-2"] }, parsed.ctaTitle2)
+          u("listItem", [
+            u("link", { identifier: id.cta2, url: data.options["cta-url-2"] }, parsed.ctaTitle2)
           ])
         );
       }
-      const list = u2("list", { ordered: false, spread: false }, ctas);
+      const list = u("list", { ordered: false, spread: false }, ctas);
       contents.push(list);
     }
-    const block = u2(
+    const block = u(
       "block",
       {
         kind: "hero",
