@@ -13,7 +13,7 @@ project:
     - discourse.mjs
     - curvenote-web.mjs
 site:
-  template: ../../dev-journals/landing-theme
+  template: curvenote-landing
   options:
     logo: qiime2.svg
     favicon: images/qiime2-favicon-256.png
