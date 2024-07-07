@@ -9,11 +9,9 @@ project:
   github: https://github.com/qiime2
   # bibliography: []
   plugins:
-    - hero.mjs
-    - footer.mjs
-    - lorem.mjs
     - scienceicons.mjs
     - discourse.mjs
+    - curvenote-web.mjs
 site:
   template: ../../dev-journals/landing-theme
   options:
