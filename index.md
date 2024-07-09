@@ -22,7 +22,7 @@ Find [announcements](https://forum.qiime2.org/c/announcements/8) of releases and
 
 :::{discourse} https://forum.qiime2.org
 :category: announcements
-:mode: server
+:mode: client
 :limit: 8
 :pinned: false
 :logo: forum-logo.png
