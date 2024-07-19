@@ -7,7 +7,7 @@ A MyST based landing page for the QIIME 2 project using the open source [Landing
 ## Features
 
 - Site wide configuration - [see theme docs](https://github.com/curvenote-themes/landing)
-- Configurable Hero & Footer Units - added using customer ["parts" in the theme]() along with [custom directives]()
+- Configurable Hero & Footer Units - added using [custom "parts" in the theme]() along with [custom directives]()
 - [A Discourse directive](https://github.com/myst-ext)
 - [A Science Icons Role](https://github.com/curvenote/scienceicons)
 
