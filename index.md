@@ -1,6 +1,6 @@
 +++ { "part": "hero" }
-:::{hero} Welcome to QIIME 2™
-:tagline: a microbiome multi-omics bioinformatics and data science platform
+:::{hero} QIIME 2
+:tagline: microbiome multi-omics bioinformatics and data science
 :cta-url: https://develop.qiime2.org
 :cta-title: Start Developing
 :cta-url-2: https://library.qiime2.org
@@ -16,7 +16,7 @@
 
 ## 🙋 Get help, connect, and learn on the QIIME 2 Forum
 
-[_The Forum_](https://forum.qiime2.org) is your main resource for using QIIME 2.
+[_The QIIME 2 Forum_](https://forum.qiime2.org) is your main resource for using QIIME 2.
 Running since 2016, with over 7000 registered users, and over 500,000 page views per month, it's the hub of the microbiome data science community.
 Find [announcements](https://forum.qiime2.org/c/announcements/8) of releases and workshops, discover or share microbiome-related jobs, and get technical support - all for free on the Forum. See the latest announcements below 👇.
 
@@ -29,14 +29,7 @@ Find [announcements](https://forum.qiime2.org/c/announcements/8) of releases and
 :logo-title: qiime logo
 :::
 
-## 🔌 Build, support, and publish your own QIIME 2 plugins
 
-[_Developing with QIIME 2_](https://develop.qiime2.org) is a new Jupyter Book that will teach you QIIME 2 plugin development, starting with a 7 lesson tutorial where you'll build your first QIIME 2 plugin from scratch.
-[New content weekly](https://github.com/caporaso-lab/developing-with-qiime2/commits/main/) through 2024!
-
-```{image} ./images/dwq2-light.png
-:height: 150px
-```
 
 ## 🧐 Learn to use QIIME 2
 
@@ -118,12 +111,12 @@ feature_table <- Artifact$load(fn)
 ::::
 :::::
 
-## 📈 Interact with QIIME 2 results and view their data provenance
+## 📈 Interact with QIIME 2 results and explore how they were generated
 
-The new QIIME 2 View is completed re-written, enabling us to bring new features to you quicker.
+The new [QIIME 2 View](https://view.qiime2.org) is completed re-written, enabling us to bring new features to you quicker.
 For now, check out the new dynamic [`Visualization` gallery](https://view.qiime2.org) and consider sharing some of your favorite QIIME 2 results with the community.
 
-Your analysis is too complex to remember what you did, so QIIME 2 records the steps you took.
+Your analysis is complex - QIIME 2 records the steps you took to be sure that your work will be reproducible by you or others.
 
 ```{mermaid}
 flowchart LR
@@ -139,7 +132,7 @@ flowchart LR
   G --> H
 ```
 
-View the provenance of your (or anyone elses) QIIME 2 result using [QIIME 2 View](https://view.qiime2.org) or [Provenance Replay](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011676) by running:
+View the provenance of your (or anyone elses) QIIME 2 result using *QIIME 2 View* or [Provenance Replay](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011676) by running:
 
 ```shell
 $ qiime tools replay-provenance \
@@ -525,7 +518,16 @@ visualization_0_viz.save('visualization_0_viz')
 `````
 ``````
 
-## 🛠️ Discover tools built by others!
+## 🔌 Build, support, and publish your own QIIME 2 plugins
+
+[_Developing with QIIME 2_](https://develop.qiime2.org) is a new Jupyter Book that will teach you QIIME 2 plugin development, starting with a 7 lesson tutorial where you'll build your first QIIME 2 plugin from scratch.
+[New content weekly](https://github.com/caporaso-lab/developing-with-qiime2/commits/main/) through 2024!
+
+```{image} ./images/dwq2-light.png
+:height: 150px
+```
+
+## 📚 Discover tools built by others!
 
 **Coming soon:** We are currently refactoring the QIIME 2 Library to make it more useful for developers and users.
 More on this throughout 2024!
