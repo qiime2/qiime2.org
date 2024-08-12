@@ -15,7 +15,8 @@ project:
 site:
   template: curvenote/curvenote-landing
   options:
-    logo: qiime2.svg
+    logo: images/qiime2.svg
+    logo_dark: images/qiime2-inv.svg
     favicon: images/qiime2-favicon-256.png
     topbar_height: 80
     topbar_floating: false
