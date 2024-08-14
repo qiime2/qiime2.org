@@ -24,7 +24,7 @@ Find [announcements](https://forum.qiime2.org/c/announcements/8) of releases and
 :category: announcements
 :mode: client
 :limit: 8
-:pinned: false
+:pinned: true
 :logo: images/forum-logo.png
 :logo-title: qiime logo
 :::
