@@ -1,51 +1,52 @@
 +++ { "part": "hero" }
 :::{hero} QIIME 2
-:tagline: microbiome multi-omics bioinformatics and data science
-:cta-url: https://develop.qiime2.org
-:cta-title: Start Developing
-:cta-url-2: https://library.qiime2.org
-:cta-title-2: Discover Extensions
+:tagline: microbiome multi-omics data science
+:cta-url: https://docs.qiime2.org
+:cta-title: Start Learning
+:cta-url-2: https://forum.qiime2.org
+:cta-title-2: Get help
 :background-color: #3388dd
-:background-image: banner3.png
+:background-image: ai-banner-1.png
 :text-color: #eee
 :padding: 64px 24px
 :::
 +++
 
-[QIIME 2](https://doi.org/10.1038/s41587-019-0209-9)™ (pronounced "chime two" 🔔) is a microbiome multi-omics bioinformatics and data science platform that is [trusted](https://scholar.google.com/scholar?hl=en&as_sdt=805&sciodt=0,3&cites=6935821321202015575,17795719731389093288,9078996940723452772,6129633569390757233,261340794755367594&scipsc=&q=&scisbd=1_), [free](https://github.com/qiime2/qiime2/blob/dev/LICENSE), [open source](https://github.com/qiime2), [extensible](https://develop.qiime2.org), and [community developed](https://github.com/orgs/qiime2/people) and [supported](https://forum.qiime2.org/g/q2-mods).
+[QIIME 2](https://doi.org/10.1038/s41587-019-0209-9)™ (pronounced "chime two" 🔔) is a microbiome multi-omics bioinformatics and data science platform that is [trusted](https://scholar.google.com/scholar?hl=en&as_sdt=805&sciodt=0,3&cites=6935821321202015575,17795719731389093288,9078996940723452772,6129633569390757233,261340794755367594&scipsc=&q=&scisbd=1_), [free](https://github.com/qiime2/qiime2/blob/dev/LICENSE), [open source](https://github.com/qiime2), [extensible](https://develop.qiime2.org), and [community developed](https://library.qiime2.org) and [supported](https://forum.qiime2.org/g/q2-mods).
 
 ## 🙋 Get help, connect, and learn on the QIIME 2 Forum
 
-[_The QIIME 2 Forum_](https://forum.qiime2.org) is your main resource for using QIIME 2.
-Running since 2016, with over 7000 registered users, and over 500,000 page views per month, it's the hub of the microbiome data science community.
-Find [announcements](https://forum.qiime2.org/c/announcements/8) of releases and workshops, discover or share microbiome-related jobs, and get technical support - all for free on the Forum. See the latest announcements below 👇.
+The [_QIIME 2 Forum_](https://forum.qiime2.org) is your main resource for using QIIME 2.
+Running since 2016, with over 7000 registered users and over 500,000 page views per month, it's the hub of the microbiome data science community.
+Find [announcements](https://forum.qiime2.org/c/announcements/8) of releases and workshops, discover or share [microbiome-related jobs](https://forum.qiime2.org/c/q2-jobs), and get technical support - all for free on the Forum. See the latest announcements below 👇.
 
 :::{discourse} https://forum.qiime2.org
 :category: announcements
 :mode: client
 :limit: 8
 :pinned: false
-:logo: forum-logo.png
+:logo: images/forum-logo.png
 :logo-title: qiime logo
 :::
-
-
 
 ## 🧐 Learn to use QIIME 2
 
 The [QIIME 2 user documentation](https://docs.qiime2.org) is where you can find tutorials and reference content.
 There is a lot of excellent content here, and it will soon be refactored in [JupyterBook](https://jupyterbook.org/en/stable/intro.html) and with [Diátaxis](https://diataxis.fr/) to improve the organization and update the content to highlight the newest functionality.
 
-## 🎛️ Use QIIME 2 via multiple interfaces
+## 🎛️ QIIME 2 makes your data analysis as efficient and accessible as possible, for you
 
-QIIME 2 can be used programmatically (Python, R), via the command line and via Galaxy.
+If you're a data scientist or want to integrate QIIME 2 in your existing code, checkout the Python 3 or R API.
+If you prefer to work with command line tools, you can start with the command line interface.
+If you prefer a graphical interface, try using QIIME 2 through Galaxy (for example, at https://cancer.usegalaxy.org).
+You can access the same underlying analytic functionality regardless of which interface you choose, so you can pick the one that makes you most efficient.
 
-:::::{hint} An example from [Filtering Feature Tables](https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/030-tutorial-downstream/010-filtering.html)
+:::::{hint} See how this works with an example from our [Cancer Microbiome Intervention Tutorial](https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/030-tutorial-downstream/010-filtering.html)
 
-We’ll next obtain a much larger feature table representing all of the samples included in the ([LTC+21]) dataset. These would take too much time to denoise in this course, so we’ll start with the feature table, sequences, and metadata provided by the authors and filter to samples that we’ll use for our analyses. If you’d like to perform other experiments with this feature table, you can do that using the full feature table or a subset that you define by filtering.
+Here we’ll obtain a feature table and generate a visual summary of it.
 
 ::::{tab-set}
-:::{tab-item} Galaxy (q2galaxy)
+:::{tab-item} Galaxy
 
 ### Access the data
 
@@ -63,9 +64,18 @@ First, download the full feature table.
 
 1. Press the Start button at the bottom.
 
+### Summarize the table
+
+Then, generate a visual summary.
+
+**Using the `qiime2 feature-table summarize` tool:**
+1. Set “table” to #: feature-table.qza
+
+1. Press the Execute button.
+
 :::
 
-:::{tab-item} Command Line (q2cli)
+:::{tab-item} Command Line Interface
 
 ### Access the data
 
@@ -77,9 +87,19 @@ wget \
   'https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/data/030-tutorial-downstream/010-filtering/feature-table.qza'
 ```
 
+### Summarize the table
+
+Then, generate a visual summary.
+
+```sh
+qiime feature-table summarize \
+  --i-table feature-table.qza \
+  --o-visualization table.qzv
+```
+
 :::
 
-:::{tab-item} Python 3 API (qiime2)
+:::{tab-item} Python 3 API
 
 ### Access the data
 
@@ -92,9 +112,19 @@ request.urlretrieve(url, fn)
 feature_table = Artifact.load(fn)
 ```
 
+### Summarize the table
+
+Then, generate a visual summary.
+
+```python
+table_viz, = feature_table_actions.summarize(
+    table=feature_table,
+)
+```
+
 :::
 
-:::{tab-item} R API (qiime2)
+:::{tab-item} R API
 
 ### Access the data
 
@@ -107,6 +137,17 @@ request$urlretrieve(url, fn)
 feature_table <- Artifact$load(fn)
 ```
 
+### Summarize the table
+
+Then, generate a visual summary.
+
+```r
+action_results <- feature_table_actions$summarize(
+    table=feature_table,
+)
+table_viz <- action_results$visualization
+```
+
 :::
 ::::
 :::::
@@ -115,6 +156,8 @@ feature_table <- Artifact$load(fn)
 
 The new [QIIME 2 View](https://view.qiime2.org) is completed re-written, enabling us to bring new features to you quicker.
 For now, check out the new dynamic [`Visualization` gallery](https://view.qiime2.org) and consider sharing some of your favorite QIIME 2 results with the community.
+
+## 📓 Perform fully reproducible bioinformatics
 
 Your analysis is complex - QIIME 2 records the steps you took to be sure that your work will be reproducible by you or others.
 
@@ -132,7 +175,7 @@ flowchart LR
   G --> H
 ```
 
-View the provenance of your (or anyone elses) QIIME 2 result using *QIIME 2 View* or [Provenance Replay](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011676) by running:
+View the provenance of your (or anyone else's) QIIME 2 result using [*QIIME 2 View*](https://view.qiime2.org) or [Provenance Replay](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011676) by running:
 
 ```shell
 $ qiime tools replay-provenance \
@@ -520,8 +563,8 @@ visualization_0_viz.save('visualization_0_viz')
 
 ## 🔌 Build, support, and publish your own QIIME 2 plugins
 
-[_Developing with QIIME 2_](https://develop.qiime2.org) is a new Jupyter Book that will teach you QIIME 2 plugin development, starting with a 7 lesson tutorial where you'll build your first QIIME 2 plugin from scratch.
-[New content weekly](https://github.com/caporaso-lab/developing-with-qiime2/commits/main/) through 2024!
+[_Developing with QIIME 2_](https://develop.qiime2.org) is your main resource for learning QIIME 2 plugin development, starting with a 7 lesson tutorial where you'll build your first QIIME 2 plugin from scratch.
+[New content is added regularly](https://github.com/caporaso-lab/developing-with-qiime2/commits/main/).
 
 ```{image} ./images/dwq2-light.png
 :height: 150px
@@ -529,16 +572,24 @@ visualization_0_viz.save('visualization_0_viz')
 
 ## 📚 Discover tools built by others!
 
-**Coming soon:** We are currently refactoring the QIIME 2 Library to make it more useful for developers and users.
+**Coming soon:** We are currently [refactoring the QIIME 2 Library](https://library.qiime2.org) to make it more useful for developers and users.
 More on this throughout 2024!
+
+## 🙏 Funding
+
+QIIME 2 is funded in part by NIH National Cancer Institute Informatics Technology for Cancer Research grant [1U24CA248454-01](https://reporter.nih.gov/project-details/9951750), and by grant [DAF2019-207342](https://doi.org/10.37921/862772dbrrej) from the Chan Zuckerberg Initiative (CZI) DAF, an advised fund of Silicon Valley Community Foundation (CZI grant DOI: 10.37921/862772dbrrej; funder DOI 10.13039/100014989).
+
+This website was built with MyST Markdown, which is supported in part with [funding](https://sloan.org/grant-detail/6620) from the Alfred P. Sloan Foundation.
+
+Initial support for the development of QIIME 2 was provided through a [grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1565100) from the National Science Foundation.
 
 +++ { "part": "footer" }
 :::{footer}
-:logo: qiime2.svg
-:logo-dark: qiime2.svg
+:logo: images/qiime2.svg
+:logo-dark: images/qiime2-inv.svg
 :logo-title: qiime2
 :logo-url: https://qiime2.org
-:tagline: a microbiome multi-omics bioinformatics and data science platform
+:tagline: microbiome multi-omics data science
 :background-color: #666
 :text-color: #eee
 
@@ -550,10 +601,7 @@ More on this throughout 2024!
 - - [Learn](https://docs.qiime2.org)
   - [Discover](https://library.qiime2.org)
   - [Extend](https://develop.qiime2.org)
-  - [Interact](https://view.qiime2.org)
-  - [Get Help](https://forum.qiime2.org)
-- - [Contributors](https://github.com/orgs/qiime2/people)
-  - [The Caporaso Lab](https://cap-lab.bio/)
-  - [Northern Arizona University](https://nau.edu/)
+- - [Connect and get help](https://forum.qiime2.org)
+  - [View QIIME 2 `Results`](https://view.qiime2.org)
 
 :::
