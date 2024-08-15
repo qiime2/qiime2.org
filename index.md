@@ -142,7 +142,19 @@ table_viz.save('feature-table.qzv')
 
 ### Access the data
 
-First, download the full feature table.
+First, import the necessary utilities.
+
+```r
+library(reticulate)
+use_condaenv(Sys.getenv('CONDA_PREFIX'))
+
+request <- import("urllib")$request
+Artifact <- import("qiime2")$Artifact
+
+feature_table_actions <- import("qiime2.plugins.feature_table.actions")
+```
+
+Then, download the full feature table.
 
 ```r
 url <- 'https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/data/030-tutorial-downstream/010-filtering/feature-table.qza'
@@ -160,6 +172,12 @@ action_results <- feature_table_actions$summarize(
     table=feature_table,
 )
 table_viz <- action_results$visualization
+```
+
+Finally, save the resulting `Visualization`.
+
+```r
+table_viz$save('./feature-table.qzv')
 ```
 
 :::
