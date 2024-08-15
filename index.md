@@ -94,7 +94,7 @@ Then, generate a visual summary.
 ```sh
 qiime feature-table summarize \
   --i-table feature-table.qza \
-  --o-visualization table.qzv
+  --o-visualization feature-table.qzv
 ```
 
 :::
@@ -103,7 +103,15 @@ qiime feature-table summarize \
 
 ### Access the data
 
-First, download the full feature table.
+First, import the necessary utilities.
+
+```python
+from urllib import request
+from qiime2 import Artifact
+from qiime2.plugins.feature_table import actions as feature_table_actions
+```
+
+Then, download the full feature table.
 
 ```python
 url = 'https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/data/030-tutorial-downstream/010-filtering/feature-table.qza'
@@ -122,13 +130,31 @@ table_viz, = feature_table_actions.summarize(
 )
 ```
 
+Finally, save the resulting `Visualization`.
+
+```python
+table_viz.save('feature-table.qzv')
+```
+
 :::
 
 :::{tab-item} R API
 
 ### Access the data
 
-First, download the full feature table.
+First, import the necessary utilities.
+
+```r
+library(reticulate)
+use_condaenv(Sys.getenv('CONDA_PREFIX'))
+
+request <- import("urllib")$request
+Artifact <- import("qiime2")$Artifact
+
+feature_table_actions <- import("qiime2.plugins.feature_table.actions")
+```
+
+Then, download the full feature table.
 
 ```r
 url <- 'https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/data/030-tutorial-downstream/010-filtering/feature-table.qza'
@@ -146,6 +172,12 @@ action_results <- feature_table_actions$summarize(
     table=feature_table,
 )
 table_viz <- action_results$visualization
+```
+
+Finally, save the resulting `Visualization`.
+
+```r
+table_viz$save('./feature-table.qzv')
 ```
 
 :::
@@ -566,9 +598,20 @@ visualization_0_viz.save('visualization_0_viz')
 [_Developing with QIIME 2_](https://develop.qiime2.org) is your main resource for learning QIIME 2 plugin development, starting with a 7 lesson tutorial where you'll build your first QIIME 2 plugin from scratch.
 [New content is added regularly](https://github.com/caporaso-lab/developing-with-qiime2/commits/main/).
 
-```{image} ./images/dwq2-light.png
+::::{div}
+:class: dark:hidden
+:::{image} ./images/dwq2-light.png
 :height: 150px
-```
+:::
+::::
+
+::::{div}
+:class: hidden dark:block
+:::{image} ./images/dwq2-dark.png
+:height: 150px
+:::
+::::
+
 
 ## 📚 Discover tools built by others!
 
