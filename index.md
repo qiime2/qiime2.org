@@ -580,9 +580,20 @@ visualization_0_viz.save('visualization_0_viz')
 [_Developing with QIIME 2_](https://develop.qiime2.org) is your main resource for learning QIIME 2 plugin development, starting with a 7 lesson tutorial where you'll build your first QIIME 2 plugin from scratch.
 [New content is added regularly](https://github.com/caporaso-lab/developing-with-qiime2/commits/main/).
 
-```{image} ./images/dwq2-light.png
+::::{div}
+:class: dark:hidden
+:::{image} ./images/dwq2-light.png
 :height: 150px
-```
+:::
+::::
+
+::::{div}
+:class: hidden dark:block
+:::{image} ./images/dwq2-dark.png
+:height: 150px
+:::
+::::
+
 
 ## 📚 Discover tools built by others!
 
