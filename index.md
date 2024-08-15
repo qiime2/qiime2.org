@@ -94,7 +94,7 @@ Then, generate a visual summary.
 ```sh
 qiime feature-table summarize \
   --i-table feature-table.qza \
-  --o-visualization table.qzv
+  --o-visualization feature-table.qzv
 ```
 
 :::
@@ -103,7 +103,15 @@ qiime feature-table summarize \
 
 ### Access the data
 
-First, download the full feature table.
+First, import the necessary utilities.
+
+```python
+from urllib import request
+from qiime2 import Artifact
+from qiime2.plugins.feature_table import actions as feature_table_actions
+```
+
+Then, download the full feature table.
 
 ```python
 url = 'https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/data/030-tutorial-downstream/010-filtering/feature-table.qza'
@@ -120,6 +128,12 @@ Then, generate a visual summary.
 table_viz, = feature_table_actions.summarize(
     table=feature_table,
 )
+```
+
+Finally, save the resulting `Visualization`.
+
+```python
+table_viz.save('feature-table.qzv')
 ```
 
 :::
