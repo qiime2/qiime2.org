@@ -4,6 +4,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
+    "build": "myst build --html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",
@@ -12,6 +13,7 @@
     "@scienceicons/react": "0.0.11",
     "lorem-ipsum": "^2.0.8",
     "myst-common": "^1.4.7",
+    "mystmd": "^1.3.11",
     "unist-builder": "^4.0.0",
     "unist-util-select": "^5.1.0"
   }
