@@ -1,7 +1,7 @@
 +++ { "part": "hero" }
 :::{hero} QIIME 2
 :tagline: microbiome multi-omics data science
-:cta-url: https://docs.qiime2.org
+:cta-url: https://use.qiime2.org
 :cta-title: Start Learning
 :cta-url-2: https://forum.qiime2.org
 :cta-title-2: Get help
@@ -13,6 +13,13 @@
 +++
 
 [QIIME 2](https://doi.org/10.1038/s41587-019-0209-9)™ (pronounced "chime two" 🔔) is a microbiome multi-omics bioinformatics and data science platform that is [trusted](https://scholar.google.com/scholar?hl=en&as_sdt=805&sciodt=0,3&cites=6935821321202015575,17795719731389093288,9078996940723452772,6129633569390757233,261340794755367594&scipsc=&q=&scisbd=1_), [free](https://github.com/qiime2/qiime2/blob/dev/LICENSE), [open source](https://github.com/qiime2), [extensible](https://develop.qiime2.org), and [community developed](https://library.qiime2.org) and [supported](https://forum.qiime2.org/g/q2-mods).
+
+Take a look through the [thousands of published research articles](https://scholar.google.com/scholar?hl=en&as_sdt=805&sciodt=0,3&cites=6935821321202015575,17795719731389093288,9078996940723452772,6129633569390757233,261340794755367594&scipsc=&q=&scisbd=1_), [hundreds of patent applications](https://www.google.com/url?q=https://www.lens.org/lens/search/patent/list?q%3Dqiime%2520OR%2520qiime2%26p%3D0%26n%3D10%26s%3D_score%26d%3D%252B%26f%3Dfalse%26e%3Dfalse%26l%3Den%26authorField%3Dauthor%26dateFilterField%3DpublishedDate%26orderBy%3D%252B_score%26presentation%3Dfalse%26preview%3Dtrue%26stemmed%3Dtrue%26useAuthorId%3Dfalse&sa=D&source=docs&ust=1731010686324313&usg=AOvVaw25KIOuoi9qC5VwHoE-zFbt), and [tens of clinical trial records](https://www.google.com/url?q=https://clinicaltrials.gov/search?term%3Dqiime%2520OR%2520qiime2&sa=D&source=docs&ust=1731010686324572&usg=AOvVaw2v_KGl33dJHNbzzNuhneVA) that reference the project.
+
+## Get started
+
+If you have QIIME 2 Results that you'd like to interact with, you can do that without installing anything using [QIIME 2 View](https://view.qiime2.org).
+If you want to install and start using QIIME 2, refer to the [Installing QIIME 2](https://docs.qiime2.org/2024.10/install/) section of the user documentation.
 
 ## 🙋 Get help, connect, and learn on the QIIME 2 Forum
 
@@ -32,7 +39,8 @@ Find [announcements](https://forum.qiime2.org/c/announcements/8) of releases and
 ## 🧐 Learn to use QIIME 2
 
 The [QIIME 2 user documentation](https://docs.qiime2.org) is where you can find tutorials and reference content.
-There is a lot of excellent content here, and it will soon be refactored in [JupyterBook](https://jupyterbook.org/en/stable/intro.html) and with [Diátaxis](https://diataxis.fr/) to improve the organization and update the content to highlight the newest functionality.
+There is a lot of excellent content here, and it is currently being refactored in [JupyterBook](https://jupyterbook.org/en/stable/intro.html) and with [Diátaxis](https://diataxis.fr/) to improve the organization and update the content to highlight the newest functionality.
+Check out the refactored documentation in [*Using QIIME 2*](https://use.qiime2.org).
 
 ## 🎛️ QIIME 2 makes your data analysis as efficient and accessible as possible, for you
 
@@ -641,7 +649,7 @@ Initial support for the development of QIIME 2 was provided through a [grant](ht
 [{scienceicon}`github`](https://github.com/qiime2)
 [{scienceicon}`discourse`](https://forum.qiime2.org)
 
-- - [Learn](https://docs.qiime2.org)
+- - [Learn](https://use.qiime2.org)
   - [Discover](https://library.qiime2.org)
   - [Extend](https://develop.qiime2.org)
 - - [Connect and get help](https://forum.qiime2.org)
