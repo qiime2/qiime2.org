@@ -605,6 +605,7 @@ visualization_0_viz.save('visualization_0_viz')
 
 [_Developing with QIIME 2_](https://develop.qiime2.org) is your main resource for learning QIIME 2 plugin development, starting with a 7 lesson tutorial where you'll build your first QIIME 2 plugin from scratch.
 [New content is added regularly](https://github.com/caporaso-lab/developing-with-qiime2/commits/main/).
+We'll be accepting new entries to the [refactored QIIME 2 Library](https://library.qiime2.org) soon (we're currently testing with "alpha" users).
 
 ::::{div}
 :class: dark:hidden
@@ -623,8 +624,19 @@ visualization_0_viz.save('visualization_0_viz')
 
 ## 📚 Discover tools built by others!
 
-**Coming soon:** We are currently [refactoring the QIIME 2 Library](https://library.qiime2.org) to make it more useful for developers and users.
-More on this throughout 2024!
+The [newly refactored QIIME 2 Library](https://library.qiime2.org) is now live, and we have plans to continue to integrate new functionality to make it more useful for developers and users.
+
+You can also learn about new functionality being introduced by the QIIME 2 developer community in the Community Contributions category on the QIIME 2 Forum:
+
+:::{discourse} https://forum.qiime2.org
+:category: community-contributions/community-plugins
+:mode: client
+:limit: 8
+:pinned: true
+:logo: images/forum-logo.png
+:logo-title: qiime logo
+:::
+
 
 ## 🙏 Funding
 
