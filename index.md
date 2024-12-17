@@ -197,6 +197,21 @@ table_viz$save('./feature-table.qzv')
 The new [QIIME 2 View](https://view.qiime2.org) is completed re-written, enabling us to bring new features to you quicker.
 For now, check out the new dynamic [`Visualization` gallery](https://view.qiime2.org) and consider sharing some of your favorite QIIME 2 results with the community.
 
+## 📚 Discover tools built by others!
+
+The [newly refactored QIIME 2 Library](https://library.qiime2.org) is now live, and we have plans to continue to integrate new functionality to make it more useful for developers and users.
+
+You can also learn about new functionality being introduced by the QIIME 2 developer community in the Community Contributions category on the QIIME 2 Forum:
+
+:::{discourse} https://forum.qiime2.org
+:category: community-contributions
+:mode: client
+:limit: 8
+:pinned: true
+:logo: images/forum-logo.png
+:logo-title: qiime logo
+:::
+
 ## 📓 Perform fully reproducible bioinformatics
 
 Your analysis is complex - QIIME 2 records the steps you took to be sure that your work will be reproducible by you or others.
@@ -620,22 +635,6 @@ We'll be accepting new entries to the [refactored QIIME 2 Library](https://libra
 :height: 150px
 :::
 ::::
-
-
-## 📚 Discover tools built by others!
-
-The [newly refactored QIIME 2 Library](https://library.qiime2.org) is now live, and we have plans to continue to integrate new functionality to make it more useful for developers and users.
-
-You can also learn about new functionality being introduced by the QIIME 2 developer community in the Community Contributions category on the QIIME 2 Forum:
-
-:::{discourse} https://forum.qiime2.org
-:category: community-contributions/community-plugins
-:mode: client
-:limit: 8
-:pinned: true
-:logo: images/forum-logo.png
-:logo-title: qiime logo
-:::
 
 
 ## 🙏 Funding
